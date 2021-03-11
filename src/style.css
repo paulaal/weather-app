@@ -70,3 +70,8 @@ button {
 	border-radius: 30px;
 	box-shadow: 0px;
 }
+
+#footer {
+	text-align: center;
+	font-size: 15px;
+}
