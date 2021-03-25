@@ -1,19 +1,28 @@
-let now = new Date();
-let days = [
-	"Sunday",
-	"Monday",
-	"Tuesday",
-	"Wednesday",
-	"Thursday",
-	"Friday",
-	"Saturday",
-];
-let day = days[now.getDay()];
-let hour = now.getHours();
-let min = now.getMinutes();
-
 let date_for = document.querySelector("#date-formatted");
-date_for.innerHTML = `${day} ${hour}:${min}`;
+date_for.innerHTML = formatDate(response.data.dt * 1000);
+
+function formatDate(timestamp) {
+	let now = new Date(timestamp);
+	let hour = now.getHours();
+	if (hour < 10) {
+		hour = `0${hour}`;
+	}
+	let min = now.getMinutes();
+	if (min < 10) {
+		min = `0 ${min}`;
+	}
+	let days = [
+		"Sunday",
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday",
+	];
+	let day = days[now.getDay()];
+	return `${day} ${hour}:${min}`;
+}
 
 function updateTemperature(response) {
 	let tempOk = Math.round(response.data.main.temp);
