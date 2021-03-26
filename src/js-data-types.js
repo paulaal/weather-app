@@ -1,5 +1,5 @@
-let date_for = document.querySelector("#date-formatted");
-date_for.innerHTML = formatDate(response.data.dt * 1000);
+let apiKey = "523328191cb42f7e509a7d1cfe8f3757";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Madrid&appid=${apiKey}&units=metric`;
 
 function formatDate(timestamp) {
 	let now = new Date(timestamp);
@@ -34,7 +34,15 @@ function updateTemperature(response) {
 	humidity_updated.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 	let wind_updated = document.querySelector("#windID");
 	wind_updated.innerHTML = `Wind: ${response.data.wind.speed}km/h`;
+	let date_for = document.querySelector("#date-formatted");
+	date_for.innerHTML = formatDate(response.data.dt * 1000);
+	let iconElement = document.querySelector("#icon");
+	iconElement.setAttribute(
+		"src",
+		`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+	);
 }
+axios.get(apiUrl).then(updateTemperature);
 
 function update_city(event) {
 	event.preventDefault();
