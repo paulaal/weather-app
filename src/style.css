@@ -2,7 +2,7 @@ section {
 	border-radius: 30px;
 	border-color: #c9cacc;
 	padding: 20px 70px;
-	margin: 15px 200px;
+	margin: 15px 150px;
 	border-width: 1px;
 	border-style: solid;
 	font-family: "Roboto", sans-serif;
@@ -12,7 +12,7 @@ section {
 
 .card-title {
 	font-weight: bold;
-	font-size: 70px;
+	font-size: 50px;
 	text-align: left;
 	text-transform: capitalize;
 }
@@ -23,7 +23,7 @@ p {
 }
 
 .card {
-	padding: 20px;
+	padding: 5px;
 	background: white;
 	border-color: white;
 	color: black;
@@ -64,7 +64,7 @@ i {
 
 button {
 	padding: 5px 10px;
-	margin-top: 50px;
+	margin-top: 10px;
 	color: black;
 	border-width: 1px;
 	border-radius: 30px;
@@ -80,4 +80,23 @@ button {
 	font-size: 40px;
 	text-align: center;
 	margin-top: 20px;
+}
+
+#forecast {
+	font-size: 100px;
+	text-align: center;
+}
+
+#weatherDescription {
+	font-size: 15px;
+	text-transform: capitalize;
+	margin: 0px;
+}
+
+#city_selected {
+	margin-bottom: 0px;
+}
+
+#currentLocation {
+	margin-top: 50px;
 }

@@ -26,7 +26,7 @@ function UpdateHours(timestamp) {
 	}
 	let min = now.getMinutes();
 	if (min < 10) {
-		min = `0 ${min}`;
+		min = `0${min}`;
 	}
 	return `${hour}:${min}`;
 }
@@ -39,6 +39,8 @@ function updateTemperature(response) {
 	temp_updated_c.innerHTML = `${tempOk}°C`;
 	let city_updated = document.querySelector("#city_selected");
 	city_updated.innerHTML = `${response.data.name}`;
+	let description = document.querySelector("#weatherDescription");
+	description.innerHTML = `${response.data.weather[0].description}`;
 	let humidity_updated = document.querySelector("#humidityID");
 	humidity_updated.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 	let wind_updated = document.querySelector("#windID");
