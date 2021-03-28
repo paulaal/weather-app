@@ -28,13 +28,14 @@ function updateTemperature(response) {
 	let tempOk = Math.round(response.data.main.temp);
 	celsiusTemp = response.data.main.temp;
 	let temp_updated_c = document.querySelector("#temperature_units");
-	temp_updated_c.innerHTML = `${tempOk}°`;
+	temp_updated_c.innerHTML = `${tempOk}°C`;
 	let city_updated = document.querySelector("#city_selected");
 	city_updated.innerHTML = `${response.data.name}`;
 	let humidity_updated = document.querySelector("#humidityID");
 	humidity_updated.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 	let wind_updated = document.querySelector("#windID");
 	wind_updated.innerHTML = `Wind: ${response.data.wind.speed}km/h`;
+	kmSpeed = response.data.wind.speed;
 	let date_for = document.querySelector("#date-formatted");
 	date_for.innerHTML = formatDate(response.data.dt * 1000);
 	let iconElement = document.querySelector("#icon");
@@ -59,8 +60,11 @@ city.addEventListener("submit", update_city);
 function temp_cel(event) {
 	event.preventDefault();
 	let tempCel = Math.round(celsiusTemp);
+	let speedKm = kmSpeed;
 	let temp_updated_c = document.querySelector("#temperature_units");
-	temp_updated_c.innerHTML = `${tempCel}°`;
+	temp_updated_c.innerHTML = `${tempCel}°C`;
+	let km_Speed = document.querySelector("#windID");
+	km_Speed.innerHTML = `Wind: ${speedKm} km/h`;
 }
 
 let button_c = document.querySelector("#button-cel");
@@ -69,13 +73,18 @@ button_c.addEventListener("click", temp_cel);
 function temp_fah(event) {
 	event.preventDefault();
 	let tempOk = Math.round(celsiusTemp * (9 / 5) + 32);
+	let miles = Math.round((kmSpeed / 1.609) * 100) / 100;
+
 	let temp_updated_f = document.querySelector("#temperature_units");
-	temp_updated_f.innerHTML = `${tempOk}°`;
+	temp_updated_f.innerHTML = `${tempOk}°F`;
+	let milesSpeed = document.querySelector("#windID");
+	milesSpeed.innerHTML = `Wind: ${miles} mph`;
 }
 
 let button_f = document.querySelector("#button-fah");
 button_f.addEventListener("click", temp_fah);
 let celsiusTemp = null;
+let kmSpeed = null;
 
 function showPosition(position) {
 	let latitude = position.coords.latitude;
